@@ -23,6 +23,9 @@ env:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,6 +42,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ${{ inputs.dockerfile }}
           load: true
           tags: ${{ env.TEST_TAG }}
       - name: Test
@@ -48,6 +52,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ${{ inputs.dockerfile }}
           platforms: linux/amd64,linux/arm64
           # push: true
           tags: ${{ env.LATEST_TAG }}
