@@ -1,0 +1,13 @@
+---
+name: docker/langchain/base Release
+
+on:
+  workflow_dispatch: # Allows to trigger the workflow manually in GitHub UI
+
+jobs:
+  release:
+    uses: ./.github/workflows/_release_docker.yml
+    with:
+      dockerfile: Dockerfile.base
+      image-name: langchain/base
+    secrets: inherit
