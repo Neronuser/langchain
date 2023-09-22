@@ -3,6 +3,10 @@ name: docker/langchain/base Release
 
 on:
   workflow_dispatch: # Allows to trigger the workflow manually in GitHub UI
+  # TODO remove
+  push:
+    branches:
+      - nc/docker-image
 
 jobs:
   release:
